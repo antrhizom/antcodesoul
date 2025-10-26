@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Dashboard | ANT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Navigation -->
+        <nav class="bg-white rounded-xl shadow-md p-4 mb-8">
+            <div class="flex items-center gap-4 flex-wrap">
+                <a href="index.html" class="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    🏠 Start
+                </a>
+                <a href="lektion1.html" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    1️⃣ Feldforschung
+                </a>
+                <a href="lektion2.html" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    2️⃣ Triade
+                </a>
+                <a href="lektion3.html" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    3️⃣ Schlüssel
+                </a>
+                <span class="px-4 py-2 bg-indigo-600 text-white rounded-lg ml-auto">
+                    📊 Dashboard
+                </span>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                📊 Community Dashboard
+            </h1>
+            <p class="text-gray-600 text-lg">
+                Entdecken Sie, wie andere Lernende mit den Inhalten interagieren und welche Aspekte 
+                der Akteur-Netzwerk-Theorie am meisten resonieren.
+            </p>
+            <div class="mt-4 text-sm text-gray-500" id="last-update">
+                Letzte Aktivität: -
+            </div>
+        </div>
+
+        <!-- Overview Stats -->
+        <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="stat-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md">
+                <div class="text-3xl mb-2">📝</div>
+                <h3 class="text-lg font-semibold text-blue-900 mb-1">Umfragen</h3>
+                <div class="text-3xl font-bold text-blue-600" id="total-polls">0</div>
+                <p class="text-sm text-blue-700">Teilnahmen</p>
+            </div>
+
+            <div class="stat-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-md">
+                <div class="text-3xl mb-2">❓</div>
+                <h3 class="text-lg font-semibold text-green-900 mb-1">Quiz</h3>
+                <div class="text-3xl font-bold text-green-600" id="total-quiz">0</div>
+                <p class="text-sm text-green-700">Antworten</p>
+            </div>
+
+            <div class="stat-card bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-md">
+                <div class="text-3xl mb-2">🎯</div>
+                <h3 class="text-lg font-semibold text-purple-900 mb-1">Rankings</h3>
+                <div class="text-3xl font-bold text-purple-600" id="total-ranking">0</div>
+                <p class="text-sm text-purple-700">Stimmen</p>
+            </div>
+
+            <div class="stat-card bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl shadow-md">
+                <div class="text-3xl mb-2">😊</div>
+                <h3 class="text-lg font-semibold text-pink-900 mb-1">Emotionen</h3>
+                <div class="text-3xl font-bold text-pink-600" id="total-emotions">0</div>
+                <p class="text-sm text-pink-700">Reaktionen</p>
+            </div>
+        </div>
+
+        <!-- Poll Results -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">🗳️ Umfrage: Welcher Ansatz?</h2>
+            <div class="space-y-4">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700">📚 Schreibtischphilosophie</span>
+                        <span class="text-gray-600 font-semibold" id="poll1-schreibtisch-percent">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-4">
+                        <div id="poll1-schreibtisch-bar" class="progress-bar bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-1" id="poll1-schreibtisch-count">0 Stimmen</div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700">🌍 Feldforschung</span>
+                        <span class="text-gray-600 font-semibold" id="poll1-feld-percent">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-4">
+                        <div id="poll1-feld-bar" class="progress-bar bg-gradient-to-r from-green-500 to-green-600 h-4 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-1" id="poll1-feld-count">0 Stimmen</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Results -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">❓ Quiz-Antworten</h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="text-2xl mb-2">A</div>
+                    <div class="text-3xl font-bold text-gray-700" id="quiz1-a-count">0</div>
+                    <p class="text-sm text-gray-600">Antworten</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <div class="text-2xl mb-2">B ✅</div>
+                    <div class="text-3xl font-bold text-green-600" id="quiz1-b-count">0</div>
+                    <p class="text-sm text-green-700">Richtige Antwort</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="text-2xl mb-2">C</div>
+                    <div class="text-3xl font-bold text-gray-700" id="quiz1-c-count">0</div>
+                    <p class="text-sm text-gray-600">Antworten</p>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                <p class="text-blue-800">
+                    <strong>Erfolgsquote:</strong> <span id="quiz-success-rate" class="font-bold">0%</span> haben die richtige Antwort gewählt
+                </p>
+            </div>
+        </div>
+
+        <!-- Ranking Results -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">🎯 Was ist am wichtigsten?</h2>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                    <div class="text-3xl">📝</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Versuchsprotokolle</span>
+                            <span class="text-gray-600" id="ranking-protokolle-count">0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="ranking-protokolle-bar" class="progress-bar bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="text-3xl">🎤</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Interviews</span>
+                            <span class="text-gray-600" id="ranking-interviews-count">0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="ranking-interviews-bar" class="progress-bar bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="text-3xl">🔬</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Messinstrumente</span>
+                            <span class="text-gray-600" id="ranking-instrumente-count">0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="ranking-instrumente-bar" class="progress-bar bg-gradient-to-r from-green-500 to-green-600 h-3 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="text-3xl">🌧️</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 font-medium">Im Schlamm stehen</span>
+                            <span class="text-gray-600" id="ranking-schlamm-count">0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="ranking-schlamm-bar" class="progress-bar bg-gradient-to-r from-orange-500 to-orange-600 h-3 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statement Results -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">💭 Bevorzugte Beschreibungen</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+                    <div class="text-4xl mb-3">🤝</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Teilnehmende Beobachtung</h3>
+                    <div class="text-3xl font-bold text-blue-600" id="statement-teilnehmer-count">0</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
+                    <div class="text-4xl mb-3">📸</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Ethnographie der Wissenschaft</h3>
+                    <div class="text-3xl font-bold text-purple-600" id="statement-ethnograph-count">0</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
+                    <div class="text-4xl mb-3">🔨</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Praxisorientierte Forschung</h3>
+                    <div class="text-3xl font-bold text-green-600" id="statement-praxis-count">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emotion Reactions -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">😊 Emotionale Reaktionen</h2>
+            <p class="text-gray-600 mb-6">Wie reagieren Lernende auf die Idee, dass Dinge als Akteure betrachtet werden?</p>
+            <div class="flex flex-wrap gap-6 justify-center">
+                <div class="text-center">
+                    <div class="text-6xl mb-2">🤯</div>
+                    <div class="text-2xl font-bold text-gray-700" id="emotion-🤯-count">0</div>
+                    <p class="text-sm text-gray-600">Mind-blown</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-2">💡</div>
+                    <div class="text-2xl font-bold text-gray-700" id="emotion-💡-count">0</div>
+                    <p class="text-sm text-gray-600">Erleuchtend</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-2">🤔</div>
+                    <div class="text-2xl font-bold text-gray-700" id="emotion-🤔-count">0</div>
+                    <p class="text-sm text-gray-600">Nachdenklich</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-2">❤️</div>
+                    <div class="text-2xl font-bold text-gray-700" id="emotion-❤️-count">0</div>
+                    <p class="text-sm text-gray-600">Begeistert</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-2">🎯</div>
+                    <div class="text-2xl font-bold text-gray-700" id="emotion-🎯-count">0</div>
+                    <p class="text-sm text-gray-600">Trifft zu</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">💡 Über dieses Dashboard</h3>
+            <p class="text-gray-700">
+                Alle Interaktionen werden lokal in Ihrem Browser gespeichert. Das Dashboard zeigt die 
+                aggregierten Daten aller Teilnehmenden, die diese Plattform nutzen. So entsteht ein 
+                gemeinsames Bild davon, welche Aspekte der Akteur-Netzwerk-Theorie am meisten faszinieren.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-600 text-sm">
+            <p>Community Dashboard • Akteur-Netzwerk-Theorie</p>
+        </footer>
+    </div>
+
+    <script>
+        // Load all data on page load
+        window.addEventListener('load', function() {
+            loadDashboardData();
+        });
+
+        function loadDashboardData() {
+            const data = JSON.parse(localStorage.getItem('ant_data') || '{}');
+            
+            // Update last activity
+            const lastUpdate = localStorage.getItem('ant_last_update');
+            if (lastUpdate) {
+                const date = new Date(lastUpdate);
+                document.getElementById('last-update').textContent = 
+                    `Letzte Aktivität: ${date.toLocaleDateString('de-DE')} um ${date.toLocaleTimeString('de-DE')}`;
+            }
+
+            // Calculate totals
+            let totalPolls = 0;
+            let totalQuiz = 0;
+            let totalRanking = 0;
+            let totalEmotions = 0;
+
+            // Poll1
+            if (data.poll1) {
+                const schreibtisch = data.poll1.schreibtisch || 0;
+                const feld = data.poll1.feld || 0;
+                const total = schreibtisch + feld;
+                totalPolls = total;
+
+                if (total > 0) {
+                    const schreibtischPercent = Math.round((schreibtisch / total) * 100);
+                    const feldPercent = Math.round((feld / total) * 100);
+
+                    document.getElementById('poll1-schreibtisch-count').textContent = `${schreibtisch} Stimmen`;
+                    document.getElementById('poll1-schreibtisch-percent').textContent = `${schreibtischPercent}%`;
+                    document.getElementById('poll1-schreibtisch-bar').style.width = `${schreibtischPercent}%`;
+
+                    document.getElementById('poll1-feld-count').textContent = `${feld} Stimmen`;
+                    document.getElementById('poll1-feld-percent').textContent = `${feldPercent}%`;
+                    document.getElementById('poll1-feld-bar').style.width = `${feldPercent}%`;
+                }
+            }
+
+            // Quiz1
+            if (data.quiz1) {
+                const a = data.quiz1.a || 0;
+                const b = data.quiz1.b || 0;
+                const c = data.quiz1.c || 0;
+                const total = a + b + c;
+                totalQuiz = total;
+
+                document.getElementById('quiz1-a-count').textContent = a;
+                document.getElementById('quiz1-b-count').textContent = b;
+                document.getElementById('quiz1-c-count').textContent = c;
+
+                if (total > 0) {
+                    const successRate = Math.round((b / total) * 100);
+                    document.getElementById('quiz-success-rate').textContent = `${successRate}%`;
+                }
+            }
+
+            // Ranking
+            if (data.ranking) {
+                const protokolle = data.ranking.protokolle || 0;
+                const interviews = data.ranking.interviews || 0;
+                const instrumente = data.ranking.instrumente || 0;
+                const schlamm = data.ranking.schlamm || 0;
+                const total = protokolle + interviews + instrumente + schlamm;
+                totalRanking = total;
+
+                if (total > 0) {
+                    updateRankingBar('protokolle', protokolle, total);
+                    updateRankingBar('interviews', interviews, total);
+                    updateRankingBar('instrumente', instrumente, total);
+                    updateRankingBar('schlamm', schlamm, total);
+                }
+            }
+
+            // Statement
+            if (data.statement) {
+                document.getElementById('statement-teilnehmer-count').textContent = data.statement.teilnehmer || 0;
+                document.getElementById('statement-ethnograph-count').textContent = data.statement.ethnograph || 0;
+                document.getElementById('statement-praxis-count').textContent = data.statement.praxis || 0;
+            }
+
+            // Emotions
+            if (data.emotion) {
+                const emojis = ['🤯', '💡', '🤔', '❤️', '🎯'];
+                emojis.forEach(emoji => {
+                    const count = data.emotion[emoji] || 0;
+                    totalEmotions += count;
+                    document.getElementById(`emotion-${emoji}-count`).textContent = count;
+                });
+            }
+
+            // Update overview stats
+            document.getElementById('total-polls').textContent = totalPolls;
+            document.getElementById('total-quiz').textContent = totalQuiz;
+            document.getElementById('total-ranking').textContent = totalRanking;
+            document.getElementById('total-emotions').textContent = totalEmotions;
+        }
+
+        function updateRankingBar(option, count, total) {
+            const percent = Math.round((count / total) * 100);
+            document.getElementById(`ranking-${option}-count`).textContent = count;
+            document.getElementById(`ranking-${option}-bar`).style.width = `${percent}%`;
+        }
+
+        // Auto-refresh every 5 seconds
+        setInterval(loadDashboardData, 5000);
+    </script>
+</body>
+</html>
