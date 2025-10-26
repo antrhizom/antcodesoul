@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akteur-Netzwerk-Theorie | Bruno Latour</title>
+    <meta name="description" content="Interaktive Lernplattform zur Akteur-Netzwerk-Theorie von Bruno Latour">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Header -->
+        <header class="text-center mb-16 fade-in">
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">
+                Akteur-Netzwerk-Theorie verstehen
+            </h1>
+            <p class="text-xl text-gray-600">
+                Eine interaktive Reise durch Bruno Latours Wissenschaftsphilosophie
+            </p>
+        </header>
+
+        <!-- Main Content Box -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-xl mb-12 fade-in fade-in-delay-1">
+            <div class="bg-white/80 backdrop-blur rounded-xl p-8">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                    🎯 Ziel dieser Plattform
+                </h2>
+                
+                <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
+                    <p>
+                        Willkommen zur interaktiven Lernplattform für die <strong>Akteur-Netzwerk-Theorie (ANT)</strong> 
+                        von Bruno Latour! Hier können Sie auf innovative und spielerische Weise verstehen, wie 
+                        Wissenschaft wirklich funktioniert.
+                    </p>
+                    
+                    <p>
+                        Die ANT revolutioniert unser Verständnis davon, wie Wissen entsteht. Latour zeigt uns, 
+                        dass nicht nur Menschen, sondern auch Dinge, Instrumente und Technologien aktiv am 
+                        wissenschaftlichen Prozess beteiligt sind.
+                    </p>
+
+                    <div class="bg-blue-50 rounded-lg p-6 my-6">
+                        <h3 class="font-semibold text-blue-900 mb-3 text-xl">Was Sie hier erwartet:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-2xl">📚</span>
+                                <div>
+                                    <strong>Drei aufeinander aufbauende Lektionen</strong><br>
+                                    <span class="text-gray-600">Lernen Sie Schritt für Schritt die Kernkonzepte der ANT kennen</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-2xl">💡</span>
+                                <div>
+                                    <strong>Konkrete Beispiele</strong><br>
+                                    <span class="text-gray-600">Von brasilianischen Bodenwissenschaftlern bis zum Berliner Schlüssel</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-2xl">🎨</span>
+                                <div>
+                                    <strong>Interaktive Elemente</strong><br>
+                                    <span class="text-gray-600">Reagieren Sie mit Likes, Emojis und Stickern auf Inhalte</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-2xl">🌐</span>
+                                <div>
+                                    <strong>Community Dashboard</strong><br>
+                                    <span class="text-gray-600">Sehen Sie, welche Themen andere Lernende am meisten faszinieren</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p class="text-center text-gray-600 italic">
+                        Diese Plattform basiert auf der FAZ-Rezension von Bruno Latours Buch 
+                        "Der Berliner Schlüssel" (1996) und macht die komplexen Ideen der 
+                        Akteur-Netzwerk-Theorie zugänglich und verständlich.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center space-y-6 fade-in fade-in-delay-2">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6">
+                Bereit, die ANT zu entdecken?
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="text-4xl mb-3">🌍</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Lektion 1</h3>
+                    <p class="text-sm text-gray-600 mb-4">Feldforschung statt Philosophie</p>
+                    <a href="lektion1.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Los geht's →
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="text-4xl mb-3">🔬</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Lektion 2</h3>
+                    <p class="text-sm text-gray-600 mb-4">Die Triade und Einschreibsysteme</p>
+                    <a href="lektion2.html" class="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        Entdecken →
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2">
+                    <div class="text-4xl mb-3">🔑</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Lektion 3</h3>
+                    <p class="text-sm text-gray-600 mb-4">Der Berliner Schlüssel als Metapher</p>
+                    <a href="lektion3.html" class="inline-block bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                        Verstehen →
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-md">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">📊 Community Dashboard</h3>
+                <p class="text-gray-600 mb-4">
+                    Entdecken Sie, welche Konzepte die Lerngemeinschaft am meisten bewegen
+                </p>
+                <a href="dashboard.html" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                    Zum Dashboard →
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-16 text-center text-gray-600 text-sm fade-in fade-in-delay-3">
+            <p class="mb-2">Eine interaktive Lernplattform zur Akteur-Netzwerk-Theorie</p>
+            <p class="text-gray-500">© 2025 • Basierend auf Bruno Latours "Der Berliner Schlüssel" (1996)</p>
+        </footer>
+    </div>
+</body>
+</html>
