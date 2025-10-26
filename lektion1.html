@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 1: Feldforschung | ANT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .poll-option {
+            transition: all 0.3s ease;
+        }
+        .poll-option:hover {
+            transform: translateX(5px);
+        }
+        .poll-option.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Navigation -->
+        <nav class="bg-white rounded-xl shadow-md p-4 mb-8">
+            <div class="flex items-center gap-4 flex-wrap">
+                <a href="index.html" class="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    🏠 Start
+                </a>
+                <span class="px-4 py-2 bg-blue-600 text-white rounded-lg">
+                    1️⃣ Feldforschung
+                </span>
+                <a href="lektion2.html" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    2️⃣ Triade
+                </a>
+                <a href="lektion3.html" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    3️⃣ Schlüssel
+                </a>
+                <a href="dashboard.html" class="px-4 py-2 bg-indigo-100 hover:bg-indigo-200 rounded-lg transition-colors ml-auto">
+                    📊 Dashboard
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Article -->
+        <article class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <div class="mb-6">
+                <div class="text-sm text-gray-500 mb-2">📖 Lektion 1 von 3</div>
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                    🌍 Feldforschung statt Schreibtischphilosophie
+                </h1>
+            </div>
+
+            <!-- Intro -->
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+                <h2 class="text-xl font-semibold text-blue-900 mb-3">Was macht Latour anders?</h2>
+                <p class="text-gray-700">
+                    Bruno Latour revolutioniert die Wissenschaftsphilosophie, indem er nicht am Schreibtisch 
+                    über Wissenschaft nachdenkt, sondern <strong>zu den Forschenden ins Feld geht</strong>.
+                </p>
+            </div>
+
+            <!-- Interactive Poll 1 -->
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">🗳️ Umfrage: Welcher Ansatz spricht Sie mehr an?</h3>
+                <p class="text-gray-600 mb-4">Wählen Sie eine Option:</p>
+                <div id="poll1" class="space-y-3">
+                    <button onclick="vote('poll1', 'schreibtisch')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span>📚 <strong>Schreibtischphilosophie:</strong> Texte analysieren, Theorien entwickeln</span>
+                            <span id="poll1-schreibtisch-count" class="text-gray-500"></span>
+                        </div>
+                    </button>
+                    <button onclick="vote('poll1', 'feld')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span>🌍 <strong>Feldforschung:</strong> Bei den Forschenden vor Ort sein</span>
+                            <span id="poll1-feld-count" class="text-gray-500"></span>
+                        </div>
+                    </button>
+                </div>
+                <div id="poll1-result" class="mt-4 hidden bg-white p-4 rounded-lg">
+                    <p class="text-green-700 font-semibold">✅ Danke für Ihre Stimme!</p>
+                </div>
+            </div>
+
+            <!-- Content Section 1 -->
+            <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+                🎓 Traditionelle Wissenschaftsphilosophie
+            </h2>
+            <div class="bg-gray-50 p-6 rounded-xl mb-6">
+                <p class="text-gray-700 mb-4">
+                    Die meisten Wissenschaftsphilosophen kennen den Forschungsbetrieb nur aus zweiter Hand. 
+                    Sie befassen sich mit:
+                </p>
+                <ul class="space-y-2 text-gray-700">
+                    <li>✍️ Hochkonventionellen Texten und fertigen Publikationen</li>
+                    <li>📚 Abstrakten Theorien über Erkenntnis</li>
+                    <li>🤔 Philosophischen Debatten über Wahrheit und Objektivität</li>
+                </ul>
+                <p class="mt-4 text-gray-600 italic">
+                    → Sie sehen nur das Endprodukt, nicht den Forschungsprozess selbst
+                </p>
+            </div>
+
+            <!-- Interactive Quiz -->
+            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">❓ Verständnisfrage</h3>
+                <p class="text-gray-700 mb-4">Was ist der Hauptunterschied zwischen traditioneller Wissenschaftsphilosophie und Latours Ansatz?</p>
+                <div id="quiz1" class="space-y-3">
+                    <button onclick="checkAnswer('quiz1', 'a', false)" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <strong>A)</strong> Latour schreibt kürzere Bücher
+                    </button>
+                    <button onclick="checkAnswer('quiz1', 'b', true)" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <strong>B)</strong> Latour geht zu den Forschenden ins Feld statt nur Texte zu lesen
+                    </button>
+                    <button onclick="checkAnswer('quiz1', 'c', false)" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <strong>C)</strong> Latour interessiert sich nicht für Philosophie
+                    </button>
+                </div>
+                <div id="quiz1-result" class="mt-4 hidden"></div>
+            </div>
+
+            <!-- Content Section 2 -->
+            <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+                🔬 Latours Ansatz: Ethnographie der Wissenschaft
+            </h2>
+            <div class="bg-green-50 p-6 rounded-xl mb-6">
+                <p class="text-gray-700 mb-4">
+                    <strong>Latour betreibt regelrechte Feldstudien.</strong> Er interessiert sich für:
+                </p>
+                <ul class="space-y-2 text-gray-700">
+                    <li>📝 <strong>Versuchsprotokolle</strong> - die täglichen Aufzeichnungen</li>
+                    <li>🔧 <strong>Manipulationen</strong> - wie Forschende ihre Objekte bearbeiten</li>
+                    <li>📊 <strong>Messinstrumente</strong> - die technischen Vermittler</li>
+                    <li>⏰ <strong>Das Lauern auf irgendeinen Wink der Materie</strong> - das geduldige Warten auf Resultate</li>
+                </ul>
+            </div>
+
+            <!-- Interactive Ranking -->
+            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">🎯 Ranking: Was ist am wichtigsten?</h3>
+                <p class="text-gray-600 mb-4">Welcher Aspekt von Latours Forschung ist Ihrer Meinung nach am wichtigsten?</p>
+                <div id="ranking" class="space-y-3">
+                    <button onclick="rank('ranking', 'protokolle')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span>📝 Versuchsprotokolle lesen</span>
+                            <span id="ranking-protokolle-count" class="text-gray-500"></span>
+                        </div>
+                    </button>
+                    <button onclick="rank('ranking', 'interviews')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span>🎤 Interviews mit Forschenden</span>
+                            <span id="ranking-interviews-count" class="text-gray-500"></span>
+                        </div>
+                    </button>
+                    <button onclick="rank('ranking', 'instrumente')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span>🔬 Messinstrumente untersuchen</span>
+                            <span id="ranking-instrumente-count" class="text-gray-500"></span>
+                        </div>
+                    </button>
+                    <button onclick="rank('ranking', 'schlamm')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span>🌧️ Selbst im Schlamm stehen</span>
+                            <span id="ranking-schlamm-count" class="text-gray-500"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Example -->
+            <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+                🌴 Beispiel: Boa Vista, Brasilien
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Latour setzt sich in Boa Vista in Brasilien <strong>wie seine forschenden Mitmenschen 
+                dem Schlamm und den Launen des Wetters aus</strong>. Er beobachtet nicht nur, er erlebt 
+                die Forschung am eigenen Leib.
+            </p>
+
+            <!-- Interactive Statement Selection -->
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">💭 Welches Statement trifft es am besten?</h3>
+                <p class="text-gray-600 mb-4">Wie würden Sie Latours Methode beschreiben?</p>
+                <div id="statement" class="space-y-3">
+                    <button onclick="selectStatement('statement', 'teilnehmer')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">🤝</span>
+                            <div>
+                                <strong>Teilnehmende Beobachtung</strong><br>
+                                <span class="text-sm text-gray-600">Latour wird Teil der Forschungsgemeinschaft</span>
+                            </div>
+                        </div>
+                    </button>
+                    <button onclick="selectStatement('statement', 'ethnograph')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">📸</span>
+                            <div>
+                                <strong>Ethnographie der Wissenschaft</strong><br>
+                                <span class="text-sm text-gray-600">Wissenschaft wie eine fremde Kultur studieren</span>
+                            </div>
+                        </div>
+                    </button>
+                    <button onclick="selectStatement('statement', 'praxis')" class="poll-option w-full text-left p-4 bg-white rounded-lg shadow-md hover:shadow-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">🔨</span>
+                            <div>
+                                <strong>Praxisorientierte Wissenschaftsforschung</strong><br>
+                                <span class="text-sm text-gray-600">Fokus auf das konkrete Tun, nicht auf Theorien</span>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- The "Heroes" -->
+            <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+                🎨 Die "Helden" von Latours Studien
+            </h2>
+            <p class="text-gray-700 mb-4">
+                Latours Fallgeschichten handeln von ungewöhnlichen Akteuren:
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                <div class="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
+                    <div class="text-3xl mb-2">🚪</div>
+                    <span class="text-sm font-medium">Türen</span>
+                </div>
+                <div class="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
+                    <div class="text-3xl mb-2">🔐</div>
+                    <span class="text-sm font-medium">Schlösser</span>
+                </div>
+                <div class="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
+                    <div class="text-3xl mb-2">🪱</div>
+                    <span class="text-sm font-medium">Würmer</span>
+                </div>
+                <div class="bg-white border-2 border-gray-200 p-4 rounded-lg text-center">
+                    <div class="text-3xl mb-2">🌪️</div>
+                    <span class="text-sm font-medium">Windböen</span>
+                </div>
+            </div>
+
+            <!-- Emoji Reactions -->
+            <div class="bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">😊 Wie finden Sie diese Idee?</h3>
+                <p class="text-gray-600 mb-4">Dass nicht nur Menschen, sondern auch Dinge als Akteure betrachtet werden:</p>
+                <div id="emotion" class="flex flex-wrap gap-3">
+                    <button onclick="reactEmoji('emotion', '🤯')" class="px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg text-3xl hover:scale-110 transition-transform">
+                        🤯 <span id="emotion-🤯-count" class="text-sm text-gray-600"></span>
+                    </button>
+                    <button onclick="reactEmoji('emotion', '💡')" class="px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg text-3xl hover:scale-110 transition-transform">
+                        💡 <span id="emotion-💡-count" class="text-sm text-gray-600"></span>
+                    </button>
+                    <button onclick="reactEmoji('emotion', '🤔')" class="px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg text-3xl hover:scale-110 transition-transform">
+                        🤔 <span id="emotion-🤔-count" class="text-sm text-gray-600"></span>
+                    </button>
+                    <button onclick="reactEmoji('emotion', '❤️')" class="px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg text-3xl hover:scale-110 transition-transform">
+                        ❤️ <span id="emotion-❤️-count" class="text-sm text-gray-600"></span>
+                    </button>
+                    <button onclick="reactEmoji('emotion', '🎯')" class="px-6 py-3 bg-white rounded-lg shadow-md hover:shadow-lg text-3xl hover:scale-110 transition-transform">
+                        🎯 <span id="emotion-🎯-count" class="text-sm text-gray-600"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Key Takeaway -->
+            <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 mt-8 rounded-r-lg">
+                <h3 class="text-xl font-semibold text-indigo-900 mb-3">💡 Kerngedanke</h3>
+                <p class="text-gray-700">
+                    Für Latour sind <strong>nicht nur Menschen Akteure</strong>. Auch Dinge können handeln, 
+                    vermitteln, transformieren. Die Grenze zwischen Subjekt und Objekt verschwimmt. 
+                    In der nächsten Lektion sehen wir, wie diese Vermittlung konkret funktioniert.
+                </p>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="mt-8 flex justify-between items-center pt-6 border-t border-gray-200">
+                <a href="index.html" class="flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    ← Zurück zur Übersicht
+                </a>
+                <a href="lektion2.html" class="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+                    Nächste Lektion →
+                </a>
+            </div>
+        </article>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 text-sm">
+            <p>Lektion 1 von 3 • Akteur-Netzwerk-Theorie</p>
+        </footer>
+    </div>
+
+    <script>
+        // Load counts on page load
+        window.addEventListener('load', function() {
+            updateAllCounts();
+        });
+
+        function updateAllCounts() {
+            // Update poll1 counts
+            updateCount('poll1', 'schreibtisch');
+            updateCount('poll1', 'feld');
+            
+            // Update ranking counts
+            updateCount('ranking', 'protokolle');
+            updateCount('ranking', 'interviews');
+            updateCount('ranking', 'instrumente');
+            updateCount('ranking', 'schlamm');
+            
+            // Update emotion counts
+            updateCount('emotion', '🤯');
+            updateCount('emotion', '💡');
+            updateCount('emotion', '🤔');
+            updateCount('emotion', '❤️');
+            updateCount('emotion', '🎯');
+        }
+
+        function updateCount(category, option) {
+            const data = JSON.parse(localStorage.getItem('ant_data') || '{}');
+            if (!data[category]) data[category] = {};
+            const count = data[category][option] || 0;
+            const element = document.getElementById(`${category}-${option}-count`);
+            if (element && count > 0) {
+                element.textContent = `(${count})`;
+            }
+        }
+
+        function vote(pollId, option) {
+            saveInteraction(pollId, option);
+            document.getElementById(`${pollId}-result`).classList.remove('hidden');
+            // Highlight selected
+            document.querySelectorAll(`#${pollId} button`).forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.closest('button').classList.add('selected');
+            updateCount(pollId, option);
+        }
+
+        function checkAnswer(quizId, answer, correct) {
+            saveInteraction(quizId, answer);
+            const resultDiv = document.getElementById(`${quizId}-result`);
+            resultDiv.classList.remove('hidden');
+            
+            if (correct) {
+                resultDiv.innerHTML = '<div class="bg-green-100 p-4 rounded-lg"><p class="text-green-800 font-semibold">✅ Richtig! Latour geht zu den Forschenden und beobachtet die Praxis.</p></div>';
+            } else {
+                resultDiv.innerHTML = '<div class="bg-red-100 p-4 rounded-lg"><p class="text-red-800 font-semibold">❌ Nicht ganz. Der Hauptunterschied liegt in der Feldforschung statt reiner Textanalyse.</p></div>';
+            }
+            
+            // Highlight selected
+            document.querySelectorAll(`#${quizId} button`).forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.closest('button').classList.add('selected');
+        }
+
+        function rank(rankingId, option) {
+            saveInteraction(rankingId, option);
+            // Highlight selected
+            document.querySelectorAll(`#${rankingId} button`).forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.closest('button').classList.add('selected');
+            updateCount(rankingId, option);
+        }
+
+        function selectStatement(statementId, option) {
+            saveInteraction(statementId, option);
+            // Highlight selected
+            document.querySelectorAll(`#${statementId} button`).forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.closest('button').classList.add('selected');
+        }
+
+        function reactEmoji(emotionId, emoji) {
+            saveInteraction(emotionId, emoji);
+            updateCount(emotionId, emoji);
+            
+            // Visual feedback
+            event.target.closest('button').classList.add('scale-125');
+            setTimeout(() => {
+                event.target.closest('button').classList.remove('scale-125');
+            }, 200);
+        }
+
+        function saveInteraction(category, value) {
+            // Get existing data
+            const data = JSON.parse(localStorage.getItem('ant_data') || '{}');
+            
+            // Initialize category if needed
+            if (!data[category]) {
+                data[category] = {};
+            }
+            
+            // Increment count
+            data[category][value] = (data[category][value] || 0) + 1;
+            
+            // Save
+            localStorage.setItem('ant_data', JSON.stringify(data));
+            
+            // Update timestamp
+            localStorage.setItem('ant_last_update', new Date().toISOString());
+        }
+    </script>
+</body>
+</html>
